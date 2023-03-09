@@ -23,18 +23,6 @@ public class mob : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SetTargetPosition();
-        agent.SetDestination(new Vector3(targetPosition.x, targetPosition.y, transform.position.z));
-
+        
     }
-
-    void SetTargetPosition()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        }
-    }
-
-
 }
