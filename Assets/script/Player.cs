@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateLight();
+        // UpdateLight();
         GetComponent<Rigidbody2D>().velocity = Movement * speed;
     }
 
@@ -44,12 +44,10 @@ public class Player : MonoBehaviour
     void OnSprintStart()
     {
         speed = sprintSpeed;
-        UnityEngine.Debug.Log("Sprint start");
     }
 
     void OnSprintStop()
     {
         speed = walkSpeed;
-        UnityEngine.Debug.Log("Sprint stop");
     }
 }
