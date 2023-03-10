@@ -26,6 +26,8 @@
 # Visual Studio cache directory
 .vs/
 .vs/slnx.sqlite
+.vsconfig
+.vscode
 
 # Gradle cache directory
 .gradle/
