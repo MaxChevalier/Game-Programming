@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class mob1 : MonoBehaviour
+public class freaky : MonoBehaviour
 {
 
     private bool isPlayerInRange = false;
@@ -56,10 +56,6 @@ public class mob1 : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             SetTragetPosition(other.gameObject.transform.position);
-            UnityEngine.Debug.Log("Player in range");
-        }
-        else{
-            UnityEngine.Debug.Log("Player not in range");
         }
     }
 

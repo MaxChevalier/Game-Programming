@@ -44,12 +44,12 @@ public class Player : MonoBehaviour
     void OnSprintStart()
     {
         speed = sprintSpeed;
-        UnityEngine.Debug.Log("Sprint start");
+        GetComponent<SoundCreator>().isPlaying = true;
     }
 
     void OnSprintStop()
     {
         speed = walkSpeed;
-        UnityEngine.Debug.Log("Sprint stop");
+        GetComponent<SoundCreator>().isPlaying = false;
     }
 }
