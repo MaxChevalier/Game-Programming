@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Inventory : MonoBehaviour
 {
@@ -19,5 +21,6 @@ public class Inventory : MonoBehaviour
 
     public void AddItems(int count){
         ItemsCount += count;
+        GameObject.Find("ItemsCountText").GetComponent<TextMeshProUGUI>().text = ItemsCount.ToString();
     }
 }

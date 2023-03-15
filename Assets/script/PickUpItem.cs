@@ -9,7 +9,7 @@ public class PickUpItem : MonoBehaviour
     private bool isInRange;
     void Awake()
     {
-
+        
     }
 
     void Update()
