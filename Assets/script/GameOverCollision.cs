@@ -9,7 +9,8 @@ public class GameOverCollision : MonoBehaviour
     {
         if(col.transform.tag == "Mob")
         {
-            PlayerManager.isGameOver = true;   
+            PlayerManager.isGameOver = true;
+            gameObject.SetActive(false);  
         }
     }
 }

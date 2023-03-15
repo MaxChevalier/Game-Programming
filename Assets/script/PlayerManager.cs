@@ -26,7 +26,7 @@ public class PlayerManager : MonoBehaviour
     }
     /*public void ReplayLevel()
     {
-     
+     SceneManager.LoadScene(SceneManager.GetScence().buildIndex);
     }
     */
 }
