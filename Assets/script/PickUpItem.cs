@@ -40,7 +40,6 @@ public class PickUpItem : MonoBehaviour
         }
     }
     void OnTriggerStay2D(Collider2D other) {
-    UnityEngine.Debug.Log(destroy);
     if (other.CompareTag("Item") && destroy) {
         Destroy(other.gameObject);
         destroy = false;
