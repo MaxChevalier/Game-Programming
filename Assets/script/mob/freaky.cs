@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class mob1 : MonoBehaviour
+public class freaky : MonoBehaviour
 {
 
     private bool isPlayerInRange = false;
