@@ -18,12 +18,12 @@ public class PickUpItem : MonoBehaviour
     {
     }
 
-    void OnInteract(){
+    public void OnInteract(){
         if (isInRange){
             Inventory.instance.AddItems(1);
             destroy = true;
             //Destroy(GameObject.FindWithTag("Item"));
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0.001f,0.001f);
+            transform.parent.GetComponent<Rigidbody2D>().velocity = new Vector2(0.001f,0.001f);
         }
     }
 
