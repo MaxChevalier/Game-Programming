@@ -8,6 +8,8 @@ TagManager:
   - Interacted
   - InteractUI
   - Item
+  - Baby
+  - lvlItem
   layers:
   - Default
   - TransparentFX

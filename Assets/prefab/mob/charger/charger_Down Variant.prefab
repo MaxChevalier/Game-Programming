@@ -13,11 +13,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8022125256106165892, guid: 831e82aa0434db84fae09ff65a0eb033, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.9698349
+      value: 73.16
       objectReference: {fileID: 0}
     - target: {fileID: 8022125256106165892, guid: 831e82aa0434db84fae09ff65a0eb033, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.8133552
+      value: 13.31
       objectReference: {fileID: 0}
     - target: {fileID: 8022125256106165892, guid: 831e82aa0434db84fae09ff65a0eb033, type: 3}
       propertyPath: m_LocalPosition.z
@@ -57,7 +57,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8022125256106165906, guid: 831e82aa0434db84fae09ff65a0eb033, type: 3}
       propertyPath: m_Name
-      value: charger_Down
+      value: charger_Down Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022125256106165906, guid: 831e82aa0434db84fae09ff65a0eb033, type: 3}
+      propertyPath: m_TagString
+      value: Mob
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 831e82aa0434db84fae09ff65a0eb033, type: 3}

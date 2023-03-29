@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+
 
 public class Player : MonoBehaviour
 {
@@ -13,6 +15,8 @@ public class Player : MonoBehaviour
 
     private float speed = 0f;
     private Vector2 Movement = Vector2.zero;
+
+    public bool isOnGamepad = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +27,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateLight();
+        if (!isOnGamepad)
+        {
+            UpdateLight();
+        }
         GetComponent<Rigidbody2D>().velocity = Movement * speed;
     }
 
@@ -51,5 +58,42 @@ public class Player : MonoBehaviour
     {
         speed = walkSpeed;
         GetComponent<SoundCreator>().isPlaying = false;
+    }
+
+    void OnInteract()
+    {
+        GamePlayManager lvlActionManager = GameObject.Find("lvlActionManager").GetComponent<GamePlayManager>();
+        if (lvlActionManager != null)
+        {
+            lvlActionManager.OnInteract();
+        }
+        transform.GetChild(3).GetComponent<PickUpItem>().OnInteract();
+    }
+
+    void OnToggleGamepad()
+    {
+        if (!isOnGamepad) isOnGamepad = true;
+    }
+
+    void OnToggleKeyboard()
+    {
+        if (isOnGamepad) isOnGamepad = false;
+    }
+
+    void OnLightGamepad(InputValue value)
+    {
+        Vector2 LightOriantation = value.Get<Vector2>();
+        if (LightOriantation != Vector2.zero)
+        {
+            lightTransform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(-LightOriantation.x, LightOriantation.y) * Mathf.Rad2Deg);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Mob")
+        {
+            SceneManager.LoadScene("lvl 4");
+        }
     }
 }

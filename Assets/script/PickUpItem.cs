@@ -7,19 +7,23 @@ public class PickUpItem : MonoBehaviour
 {
     public GameObject InteractUI;
     private bool isInRange;
+    private bool destroy = false;
+
     void Awake()
     {
-        
+
     }
 
     void Update()
     {
     }
 
-    void OnInteract(){
+    public void OnInteract(){
         if (isInRange){
             Inventory.instance.AddItems(1);
-            Destroy(GameObject.FindWithTag("Item"));
+            destroy = true;
+            //Destroy(GameObject.FindWithTag("Item"));
+            transform.parent.GetComponent<Rigidbody2D>().velocity = new Vector2(0.001f,0.001f);
         }
     }
 
@@ -35,4 +39,10 @@ public class PickUpItem : MonoBehaviour
             isInRange = false;
         }
     }
+    void OnTriggerStay2D(Collider2D other) {
+    if (other.CompareTag("Item") && destroy) {
+        Destroy(other.gameObject);
+        destroy = false;
+    }
+}
 }
