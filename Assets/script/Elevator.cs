@@ -6,7 +6,8 @@ public class Elevator : MonoBehaviour
 {
     public GameObject InteractUI;
     public GameObject ElevatorLockUI;
-    public GeneratorLVL1 generator;
+    public GeneretorsManager generator;
+    public int ID;
 
     private bool isInRange;
     private Animator animator;
@@ -28,7 +29,7 @@ public class Elevator : MonoBehaviour
 
     public void OnInteract(){
         if (isInRange){
-        if (!generator.LockKey){
+        if (!generator.generatorsList[ID].LockKey){
             StartCoroutine(ElevatorLockMessage());
         }
         else {

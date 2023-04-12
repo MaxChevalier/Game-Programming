@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GeneratorLVL1 : MonoBehaviour
 {
+    public bool isInRange;
     public bool LockKey = false;
-    private bool isInRange;
     public GameObject GeneratorlockUI;
     public GameObject GeneratorUnlockUI;
     public GameObject InteractUI;

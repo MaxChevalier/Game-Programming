@@ -8,6 +8,7 @@ TagManager:
   - Interacted
   - InteractUI
   - Item
+  - generator
   layers:
   - Default
   - TransparentFX
