@@ -5,8 +5,12 @@ using UnityEngine;
 public class Elevator : MonoBehaviour
 {
     public GameObject InteractUI;
+    public GameObject ElevatorLockUI;
+    public GeneratorLVL1 generator;
+
     private bool isInRange;
     private Animator animator;
+
 
     void Start()
     {
@@ -24,8 +28,19 @@ public class Elevator : MonoBehaviour
 
     public void OnInteract(){
         if (isInRange){
-         OpenElevator();
+        if (!generator.LockKey){
+            StartCoroutine(ElevatorLockMessage());
         }
+        else {
+                OpenElevator();      
+        }
+        }
+    }
+
+    private IEnumerator ElevatorLockMessage(){
+        ElevatorLockUI.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        ElevatorLockUI.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision){

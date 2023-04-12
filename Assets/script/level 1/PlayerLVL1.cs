@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerLVL1 : MonoBehaviour
 {
     public Elevator elevator;
+    public GeneratorLVL1 generator;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,5 +21,6 @@ public class PlayerLVL1 : MonoBehaviour
      void OnInteract()
     {
         elevator.OnInteract();
+        generator.OnInteract();
     }
 }
