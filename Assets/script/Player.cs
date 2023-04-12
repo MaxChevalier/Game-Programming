@@ -62,11 +62,6 @@ public class Player : MonoBehaviour
 
     void OnInteract()
     {
-        GamePlayManager lvlActionManager = GameObject.Find("lvlActionManager").GetComponent<GamePlayManager>();
-        if (lvlActionManager != null)
-        {
-            lvlActionManager.OnInteract();
-        }
         transform.GetChild(3).GetComponent<PickUpItem>().OnInteract();
     }
 

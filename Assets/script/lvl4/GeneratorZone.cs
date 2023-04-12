@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GeneratorZone : MonoBehaviour
 {
-    public int GeneratorTurnOn;
+    public int GeneratorTurnOn = 0;
     public int TotGenerator = 6;
     public GameObject InteractUI;
     public AudioClip[] audioClip;
