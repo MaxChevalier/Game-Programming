@@ -8,6 +8,7 @@ public class GeneratorLVL1 : MonoBehaviour
     public bool LockKey = false;
     public GameObject GeneratorlockUI;
     public GameObject GeneratorUnlockUI;
+    public GameObject GeneratorLimitUI;
     public GameObject InteractUI;
 
     void Start()
@@ -21,12 +22,20 @@ public class GeneratorLVL1 : MonoBehaviour
     public void OnInteract(){
         if (isInRange){
             if (!LockKey){
-                LockKey = true;
-                StartCoroutine(GeneratorUnlockMessage());
+                if (transform.parent.GetComponent<GeneretorsManager>().OneActive){
+                    StartCoroutine(GeneratorLimitMessage());
+                    Debug.Log("vous ne pouvez pas activer 2 générateurs en même temps !");
+                }
+                else {
+                     LockKey = true;
+                     StartCoroutine(GeneratorUnlockMessage());
+                     transform.parent.GetComponent<GeneretorsManager>().OneActive = true;
+                }
             }
             else {
                 LockKey = false;
                 StartCoroutine(GeneratorlockMessage());
+                transform.parent.GetComponent<GeneretorsManager>().OneActive = false;
             }
         }
     }
@@ -43,6 +52,13 @@ public class GeneratorLVL1 : MonoBehaviour
         yield return new WaitForSeconds(2f);
         GeneratorUnlockUI.SetActive(false);
     }
+
+    private IEnumerator GeneratorLimitMessage(){
+        GeneratorLimitUI.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        GeneratorLimitUI.SetActive(false);
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision){
         if(collision.CompareTag("Player")){
