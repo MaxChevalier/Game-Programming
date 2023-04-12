@@ -53,8 +53,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8022125256106165897, guid: 831e82aa0434db84fae09ff65a0eb033, type: 3}
       propertyPath: m_Offset.y
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8022125256106165899, guid: 831e82aa0434db84fae09ff65a0eb033, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1600487859, guid: 681839e566c178d488ffe20ac7f1fc93, type: 3}
     - target: {fileID: 8022125256106165906, guid: 831e82aa0434db84fae09ff65a0eb033, type: 3}
       propertyPath: m_Name
       value: charger_Down Variant
@@ -62,6 +66,10 @@ PrefabInstance:
     - target: {fileID: 8022125256106165906, guid: 831e82aa0434db84fae09ff65a0eb033, type: 3}
       propertyPath: m_TagString
       value: Mob
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022125256106165907, guid: 831e82aa0434db84fae09ff65a0eb033, type: 3}
+      propertyPath: direction
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 831e82aa0434db84fae09ff65a0eb033, type: 3}

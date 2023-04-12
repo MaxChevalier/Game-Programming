@@ -93,7 +93,7 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.tag == "Mob")
         {
-            SceneManager.LoadScene("lvl 4");
+            // SceneManager.LoadScene("lvl 4");
         }
     }
 }

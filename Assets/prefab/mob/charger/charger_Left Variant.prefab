@@ -51,9 +51,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 9135783525210692360, guid: 8d4fa6b07251b7640abefbb7a54aa53b, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135783525210692362, guid: 8d4fa6b07251b7640abefbb7a54aa53b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -169660906, guid: 681839e566c178d488ffe20ac7f1fc93, type: 3}
+    - target: {fileID: 9135783525210692363, guid: 8d4fa6b07251b7640abefbb7a54aa53b, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135783525210692370, guid: 8d4fa6b07251b7640abefbb7a54aa53b, type: 3}
+      propertyPath: direction
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 9135783525210692371, guid: 8d4fa6b07251b7640abefbb7a54aa53b, type: 3}
       propertyPath: m_Name
-      value: charger_Left
+      value: charger_Left Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d4fa6b07251b7640abefbb7a54aa53b, type: 3}

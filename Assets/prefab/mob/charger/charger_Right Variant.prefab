@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4505782596012945284, guid: 5eb96e0e3b3140d4fb365c1fa2757cb8, type: 3}
       propertyPath: m_Name
-      value: charger_Right
+      value: charger_Right Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4505782596012945285, guid: 5eb96e0e3b3140d4fb365c1fa2757cb8, type: 3}
+      propertyPath: direction
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4505782596012945298, guid: 5eb96e0e3b3140d4fb365c1fa2757cb8, type: 3}
       propertyPath: m_RootOrder
@@ -54,6 +58,26 @@ PrefabInstance:
     - target: {fileID: 4505782596012945298, guid: 5eb96e0e3b3140d4fb365c1fa2757cb8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4505782596012945309, guid: 5eb96e0e3b3140d4fb365c1fa2757cb8, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4505782596012945309, guid: 5eb96e0e3b3140d4fb365c1fa2757cb8, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4505782596012945309, guid: 5eb96e0e3b3140d4fb365c1fa2757cb8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -199206653, guid: 681839e566c178d488ffe20ac7f1fc93, type: 3}
+    - target: {fileID: 4505782596012945311, guid: 5eb96e0e3b3140d4fb365c1fa2757cb8, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4505782596012945311, guid: 5eb96e0e3b3140d4fb365c1fa2757cb8, type: 3}
+      propertyPath: m_Offset.y
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5eb96e0e3b3140d4fb365c1fa2757cb8, type: 3}
