@@ -9,6 +9,8 @@ public class Inventory : MonoBehaviour
     //singleton : une seule classe inventory
     public int ItemsCount;
 
+    public int TotItems = 0;
+
     public static Inventory instance;
 
     private void Awake(){
@@ -17,6 +19,11 @@ public class Inventory : MonoBehaviour
             return; // L'inventaire doit être unique !
         }
         instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
+    public void ActualiseMaxItems(){
+        TotItems += GameObject.FindGameObjectsWithTag("Item").Length;
     }
 
     public void AddItems(int count){

@@ -6,6 +6,8 @@ using TMPro;
 
 public class ElevatorZone : MonoBehaviour
 {
+    public AudioSource audioSource;
+    public AudioClip audioClip;
     public GeneratorZone GeneratorZone;
     public GameObject InteractUI;
     SayText sayText;
@@ -51,6 +53,7 @@ public class ElevatorZone : MonoBehaviour
             else{
                 sayText.ChangeText("No Power.\nI can't use the elevator.");
                 StartCoroutine(sayText.ShowText());
+                audioSource.PlayOneShot(audioClip);
             }
         }
     }

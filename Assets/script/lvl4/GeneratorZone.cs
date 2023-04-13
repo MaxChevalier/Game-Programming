@@ -8,6 +8,7 @@ public class GeneratorZone : MonoBehaviour
     public int TotGenerator = 6;
     public GameObject InteractUI;
     public AudioClip[] audioClip;
+    public AudioSource audioSourcePlayer;
     AudioSource audioSource;
 
     SayText sayText;
@@ -59,6 +60,7 @@ public class GeneratorZone : MonoBehaviour
                 {
                     sayText.ChangeText("I need a Jerry Can to fill the generator.");
                     StartCoroutine(sayText.ShowText());
+                    audioSourcePlayer.PlayOneShot(audioClip[2]);
                 }
             }
         }
