@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ElevatorLvl1 : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class ElevatorLvl1 : MonoBehaviour
     public GameObject ElevatorLockUI;
     public GeneretorsManagerLvl1 generator;
     public int ID;
+    public GameObject mob;
 
     private bool isInRange;
     private Animator animator;
@@ -26,47 +28,68 @@ public class ElevatorLvl1 : MonoBehaviour
     {
     }
 
-    void OpenElevator(){
+    IEnumerator OpenElevator()
+    {
         Debug.Log("Le script OpenElevator a démarré !");
         animator.SetTrigger("OpenElevator");
-        if (ID == 1) {
-             collider2D.enabled = false;
+        BoxCollider2D[] boxCollider2Ds = GetComponents<BoxCollider2D>();
+        foreach (BoxCollider2D boxCollider2D in boxCollider2Ds)
+        {
+            if (!boxCollider2D.isTrigger)
+            {
+                boxCollider2D.enabled = false;
+            }
         }
-        if (ID == 0) {
-             //fin de la partie charger nouvelle scène
+        if (ID == 1)
+        {
         }
-        if (ID == 2) {
-             //ajouter mob
+        else if (ID == 0)
+        {
+            yield return new WaitForSeconds(1f);
+            SceneManager.LoadScene("LVL3");
         }
-    }
-
-    public void OnInteract(){
-        if (isInRange){
-        if (!generator.generatorsList[ID].LockKey){
-            StartCoroutine(ElevatorLockMessage());
-            audioSource.Play();
-            
-        }
-        else {
-                OpenElevator();      
-        }
+        else if (ID == 2)
+        {
+            mob.SetActive(true);
         }
     }
 
-    private IEnumerator ElevatorLockMessage(){
+    public void OnInteract()
+    {
+        if (isInRange)
+        {
+            if (!generator.generatorsList[ID].LockKey)
+            {
+                StartCoroutine(ElevatorLockMessage());
+                audioSource.Play();
+
+            }
+            else
+            {
+                StartCoroutine(OpenElevator());
+            }
+        }
+    }
+
+    private IEnumerator ElevatorLockMessage()
+    {
         ElevatorLockUI.SetActive(true);
         yield return new WaitForSeconds(2f);
         ElevatorLockUI.SetActive(false);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision){
-        if(collision.CompareTag("Player")){
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
             InteractUI.SetActive(true);
             isInRange = true;
         }
     }
-    private void OnTriggerExit2D(Collider2D collision){
-        if(collision.CompareTag("Player")){
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
             InteractUI.SetActive(false);
             isInRange = false;
         }

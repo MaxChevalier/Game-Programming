@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class holeLvl3 : MonoBehaviour
 {
+    public string nextLevel;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +34,7 @@ public class holeLvl3 : MonoBehaviour
                 player.localRotation = Quaternion.Euler(0, 0, player.localRotation.z + rotation);
                 yield return new WaitForSeconds(0.01f);
             }
-            SceneManager.LoadScene("lvl4");
+            SceneManager.LoadScene(nextLevel);
         }
     }
 }
