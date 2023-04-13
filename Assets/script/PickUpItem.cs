@@ -40,9 +40,9 @@ public class PickUpItem : MonoBehaviour
         }
     }
     void OnTriggerStay2D(Collider2D other) {
-    if (other.CompareTag("Item") && destroy) {
-        Destroy(other.gameObject);
-        destroy = false;
+        if (other.CompareTag("Item") && destroy) {
+            Destroy(other.gameObject);
+            destroy = false;
+        }
     }
-}
 }

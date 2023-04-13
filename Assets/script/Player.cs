@@ -17,11 +17,13 @@ public class Player : MonoBehaviour
     private Vector2 Movement = Vector2.zero;
 
     public bool isOnGamepad = false;
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         selfTransform = GetComponent<Transform>();
         speed = walkSpeed;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -37,6 +39,24 @@ public class Player : MonoBehaviour
     void OnMove(InputValue value)
     {
         Movement = value.Get<Vector2>();
+        if (Movement.y > ((Mathf.Sqrt(2))/2) ) {
+            animator.SetInteger("mouvement", 1);
+            transform.GetChild(1).transform.position = new Vector3(0.50f, 0.09f, 0f)+transform.position;       
+            }
+        else if (Movement.y < (-(Mathf.Sqrt(2))/2) ){ 
+            animator.SetInteger("mouvement", 2);
+            transform.GetChild(1).transform.position = new Vector3(0.50f, 0.09f, 0f)+transform.position;
+        }
+        else if (Movement.x >= ((Mathf.Sqrt(2))/2) ){
+             animator.SetInteger("mouvement", 4);
+             transform.GetChild(1).transform.position = new Vector3(0.88f, 0.11f, 0f)+transform.position;
+        }
+        else if (Movement.x <= (-(Mathf.Sqrt(2))/2) ){
+             animator.SetInteger("mouvement", 3);
+             transform.GetChild(1).transform.position = new Vector3(-0.88f, 0.11f, 0f)+transform.position;
+        }
+        else animator.SetInteger("mouvement", 0);
+
     }
 
     void UpdateLight()
