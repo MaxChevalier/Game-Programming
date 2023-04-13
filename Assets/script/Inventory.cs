@@ -15,7 +15,7 @@ public class Inventory : MonoBehaviour
 
     private void Awake(){
         if(instance != null){
-            Debug.LogWarning("Il y a plus d'une instance de Inventory dans la scène");
+            Destroy(gameObject);
             return; // L'inventaire doit être unique !
         }
         instance = this;

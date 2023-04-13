@@ -11,7 +11,6 @@ public class GamePlayManagerLvl4 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Inventory.instance.ActualiseMaxItems();
     }
 
     // Update is called once per frame

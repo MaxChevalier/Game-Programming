@@ -16,7 +16,7 @@ public class holeLvl3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     IEnumerator OnTriggerEnter2D(Collider2D other)
@@ -29,7 +29,10 @@ public class holeLvl3 : MonoBehaviour
             float rotation = player.localRotation.z;
             for (int i = 0; i < 100; i++)
             {
-                player.localScale = new Vector3(player.localScale.x - 0.01f, player.localScale.y - 0.01f, player.localScale.z);
+                if (player.localScale.x > 0.01f)
+                {
+                    player.localScale = new Vector3(player.localScale.x - 0.01f, player.localScale.y - 0.01f, player.localScale.z);
+                }
                 rotation += 2f;
                 player.localRotation = Quaternion.Euler(0, 0, player.localRotation.z + rotation);
                 yield return new WaitForSeconds(0.01f);
