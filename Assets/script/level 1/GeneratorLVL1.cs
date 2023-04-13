@@ -24,7 +24,7 @@ public class GeneratorLVL1 : MonoBehaviour
     public void OnInteract(){
         if (isInRange){
             if (!LockKey){
-                if (transform.parent.GetComponent<GeneretorsManager>().OneActive){
+                if (transform.parent.GetComponent<GeneretorsManagerLvl1>().OneActive){
                     GeneratorUnlockUI.SetActive(false);
                     StartCoroutine(DisplayMessage(GeneratorLimitUI));
                     Debug.Log("vous ne pouvez pas activer 2 générateurs en même temps !");
@@ -34,13 +34,13 @@ public class GeneratorLVL1 : MonoBehaviour
                      LockKey = true;
                      GeneratorLimitUI.SetActive(false);
                      StartCoroutine(DisplayMessage(GeneratorUnlockUI));
-                     transform.parent.GetComponent<GeneretorsManager>().OneActive = true;
+                     transform.parent.GetComponent<GeneretorsManagerLvl1>().OneActive = true;
                 }
             }
             else {
                 LockKey = false;
                 StartCoroutine(DisplayMessage(GeneratorlockUI));
-                transform.parent.GetComponent<GeneretorsManager>().OneActive = false;
+                transform.parent.GetComponent<GeneretorsManagerLvl1>().OneActive = false;
             }
         }
     }

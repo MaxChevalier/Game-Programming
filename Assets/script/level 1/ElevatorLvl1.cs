@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Elevator : MonoBehaviour
+public class ElevatorLvl1 : MonoBehaviour
 {
     public GameObject InteractUI;
     public GameObject ElevatorLockUI;
-    public GeneretorsManager generator;
+    public GeneretorsManagerLvl1 generator;
     public int ID;
 
     private bool isInRange;

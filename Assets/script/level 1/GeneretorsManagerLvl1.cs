@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GeneretorsManager : MonoBehaviour
+public class GeneretorsManagerLvl1 : MonoBehaviour
 {
     public List<GeneratorLVL1> generatorsList = new List<GeneratorLVL1>();
     public bool OneActive = false;

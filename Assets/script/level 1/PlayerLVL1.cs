@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerLVL1 : MonoBehaviour
 {
-    public Elevator elevator;
-    public Elevator elevator2;
-    public Elevator elevator3;
-    public GeneretorsManager generator;
+    public ElevatorLvl1 elevator;
+    public ElevatorLvl1 elevator2;
+    public ElevatorLvl1 elevator3;
+    public GeneretorsManagerLvl1 generator;
     private AudioSource audioSource;
 
     void Start()
