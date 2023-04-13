@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GetLvlItem : MonoBehaviour
+public class GetLvl4Item : MonoBehaviour
 {
     public GameObject InteractUI;
-    public GamePlayManager gamePlayManager;
+    public GamePlayManagerLvl4 gamePlayManager;
     public AudioClip[] audioClip;
     AudioSource audioSource;
     private bool isInRange;

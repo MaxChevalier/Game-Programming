@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GamePlayManager : MonoBehaviour
+public class GamePlayManagerLvl4 : MonoBehaviour
 {
     public bool haveJerryCan = false;
-    public GetLvlItem getLvlItem;
+    public GetLvl4Item getLvlItem;
 
 
     // Start is called before the first frame update
@@ -22,8 +22,8 @@ public class GamePlayManager : MonoBehaviour
 
     public void OnInteract()
     {
-        transform.GetChild(0).GetComponent<ElevatorZone>().OnInteract();
-        transform.GetChild(1).GetComponent<GeneratorZone>().OnInteract();
+        transform.GetChild(0).GetComponent<ElevatorZoneLvl4>().OnInteract();
+        transform.GetChild(1).GetComponent<GeneratorZoneLvl4>().OnInteract();
         getLvlItem.OnInteract();
     }
 }

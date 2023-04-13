@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class ElevatorZone : MonoBehaviour
+public class ElevatorZoneLvl4 : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip audioClip;
-    public GeneratorZone GeneratorZone;
+    public GeneratorZoneLvl4 GeneratorZone;
     public GameObject InteractUI;
     SayText sayText;
 

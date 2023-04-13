@@ -5,12 +5,12 @@ using UnityEngine;
 public class playerLvl4 : MonoBehaviour
 {
     public AudioClip audioClipStartLvl;
-    private GamePlayManager lvlActionManager;
+    private GamePlayManagerLvl4 lvlActionManager;
     AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
-        lvlActionManager = GameObject.Find("lvlActionManager").GetComponent<GamePlayManager>();
+        lvlActionManager = GameObject.Find("lvlActionManager").GetComponent<GamePlayManagerLvl4>();
         audioSource = GetComponent<AudioSource>();
         audioSource.PlayOneShot(audioClipStartLvl);
     }

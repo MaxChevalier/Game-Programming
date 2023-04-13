@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GeneratorZone : MonoBehaviour
+public class GeneratorZoneLvl4 : MonoBehaviour
 {
     public int GeneratorTurnOn = 0;
     public int TotGenerator = 6;
@@ -30,10 +30,10 @@ public class GeneratorZone : MonoBehaviour
     {
         if (isInRange)
         {
-            if (transform.parent.GetComponent<GamePlayManager>().haveJerryCan)
+            if (transform.parent.GetComponent<GamePlayManagerLvl4>().haveJerryCan)
             {
                 GeneratorTurnOn++;
-                transform.parent.GetComponent<GamePlayManager>().haveJerryCan = false;
+                transform.parent.GetComponent<GamePlayManagerLvl4>().haveJerryCan = false;
                 sayText.ChangeText("Generator Turn On: " + GeneratorTurnOn + "/" + TotGenerator);
                 audioSource = transform.GetChild(GeneratorTurnOn - 1).GetComponent<AudioSource>();
                 audioSource.PlayOneShot(audioClip[0]);
