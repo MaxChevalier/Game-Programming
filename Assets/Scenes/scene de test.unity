@@ -1048,11 +1048,11 @@ Mesh:
   m_SubMeshes:
   - serializedVersion: 2
     firstByte: 0
-    indexCount: 42
+    indexCount: 90
     topology: 0
     baseVertex: 0
     firstVertex: 0
-    vertexCount: 16
+    vertexCount: 32
     localAABB:
       m_Center: {x: 12.499986, y: 1, z: 0}
       m_Extent: {x: 1.4999857, y: 1, z: 0}
@@ -1072,10 +1072,10 @@ Mesh:
   m_KeepVertices: 1
   m_KeepIndices: 1
   m_IndexFormat: 0
-  m_IndexBuffer: 00000100020000000300010004000300000004000500030004000600050006000400070002000800000000000900040001000a00020003000b00010005000c00030004000d00070006000e00050007000f000600
+  m_IndexBuffer: 00000100020003000100000003000400010004000500060004000700050008000400030008000700040008000900070008000a00090008000b000a0008000c000b0008000d000c0008000e000d000e0008000f00020010000000000011000300010012000200040013000100030014000800060015000400050016000600070017000500090018000700080019000f000a001a0009000b001b000a000c001c000b000d001d000c000e001e000d000f001f000e00
   m_VertexData:
     serializedVersion: 3
-    m_VertexCount: 16
+    m_VertexCount: 32
     m_Channels:
     - stream: 0
       offset: 0
@@ -3833,6 +3833,10 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030637652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   serializedVersion: 10
   m_SubMeshes:
