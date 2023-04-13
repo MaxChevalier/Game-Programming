@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class hole : MonoBehaviour
+public class holeLvl3 : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -22,6 +22,7 @@ public class hole : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            transform.GetChild(0).GetComponent<ParticleSystem>().Play();
             GetComponent<SpriteRenderer>().enabled = true;
             Transform player = other.gameObject.transform;
             float rotation = player.localRotation.z;
