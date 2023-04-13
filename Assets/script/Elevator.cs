@@ -11,11 +11,15 @@ public class Elevator : MonoBehaviour
 
     private bool isInRange;
     private Animator animator;
+    private AudioSource audioSource;
+    private Collider2D collider2D;
 
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+        collider2D = GetComponent<Collider2D>();
     }
 
     void Update()
@@ -25,12 +29,17 @@ public class Elevator : MonoBehaviour
     void OpenElevator(){
         Debug.Log("Le script OpenElevator a démarré !");
         animator.SetTrigger("OpenElevator");
+        if (ID == 1) {
+             collider2D.enabled = false;
+        }
     }
 
     public void OnInteract(){
         if (isInRange){
         if (!generator.generatorsList[ID].LockKey){
             StartCoroutine(ElevatorLockMessage());
+            audioSource.Play();
+            
         }
         else {
                 OpenElevator();      

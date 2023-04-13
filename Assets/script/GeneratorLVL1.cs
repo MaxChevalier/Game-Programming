@@ -10,9 +10,11 @@ public class GeneratorLVL1 : MonoBehaviour
     public GameObject GeneratorUnlockUI;
     public GameObject GeneratorLimitUI;
     public GameObject InteractUI;
+    private AudioSource audioSource;
 
     void Start()
     {
+        audioSource = transform.parent.GetComponent<AudioSource>();
     }
 
     void Update()
@@ -23,41 +25,50 @@ public class GeneratorLVL1 : MonoBehaviour
         if (isInRange){
             if (!LockKey){
                 if (transform.parent.GetComponent<GeneretorsManager>().OneActive){
-                    StartCoroutine(GeneratorLimitMessage());
+                    GeneratorUnlockUI.SetActive(false);
+                    StartCoroutine(DisplayMessage(GeneratorLimitUI));
                     Debug.Log("vous ne pouvez pas activer 2 générateurs en même temps !");
+                    audioSource.Play();
                 }
                 else {
                      LockKey = true;
-                     StartCoroutine(GeneratorUnlockMessage());
+                     GeneratorLimitUI.SetActive(false);
+                     StartCoroutine(DisplayMessage(GeneratorUnlockUI));
                      transform.parent.GetComponent<GeneretorsManager>().OneActive = true;
                 }
             }
             else {
                 LockKey = false;
-                StartCoroutine(GeneratorlockMessage());
+                StartCoroutine(DisplayMessage(GeneratorlockUI));
                 transform.parent.GetComponent<GeneretorsManager>().OneActive = false;
             }
         }
     }
 
-    private IEnumerator GeneratorlockMessage(){
-        GeneratorUnlockUI.SetActive(false);
-        GeneratorlockUI.SetActive(true);
+    private IEnumerator DisplayMessage(GameObject message){
+        message.SetActive(true);
         yield return new WaitForSeconds(2f);
-        GeneratorlockUI.SetActive(false);
-    }
-    private IEnumerator GeneratorUnlockMessage(){
-        GeneratorlockUI.SetActive(false);
-        GeneratorUnlockUI.SetActive(true);
-        yield return new WaitForSeconds(2f);
-        GeneratorUnlockUI.SetActive(false);
+        message.SetActive(false);
     }
 
-    private IEnumerator GeneratorLimitMessage(){
-        GeneratorLimitUI.SetActive(true);
-        yield return new WaitForSeconds(2f);
-        GeneratorLimitUI.SetActive(false);
-    }
+    // private IEnumerator GeneratorlockMessage(){
+    //     GeneratorUnlockUI.SetActive(false);
+    //     GeneratorlockUI.SetActive(true);
+    //     yield return new WaitForSeconds(2f);
+    //     GeneratorlockUI.SetActive(false);
+    // }
+    // private IEnumerator GeneratorUnlockMessage(){
+    //     GeneratorlockUI.SetActive(false);
+    //     GeneratorUnlockUI.SetActive(true);
+    //     yield return new WaitForSeconds(2f);
+    //     GeneratorUnlockUI.SetActive(false);
+    // }
+
+    // private IEnumerator GeneratorLimitMessage(){
+    //     GeneratorLimitUI.SetActive(true);
+    //     yield return new WaitForSeconds(2f);
+    //     GeneratorLimitUI.SetActive(false);
+    // }
 
 
     private void OnTriggerEnter2D(Collider2D collision){

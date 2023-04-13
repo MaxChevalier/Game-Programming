@@ -5,11 +5,15 @@ using UnityEngine;
 public class PlayerLVL1 : MonoBehaviour
 {
     public Elevator elevator;
+    public Elevator elevator2;
+    public Elevator elevator3;
     public GeneretorsManager generator;
-    // Start is called before the first frame update
+    private AudioSource audioSource;
+
     void Start()
     {
-        
+        audioSource = transform.GetChild(4).GetComponent<AudioSource>();
+        audioSource.Play();
     }
 
     // Update is called once per frame
@@ -21,6 +25,8 @@ public class PlayerLVL1 : MonoBehaviour
      void OnInteract()
     {
         elevator.OnInteract();
+        elevator2.OnInteract();
+        elevator3.OnInteract();
         generator.OnInteract();
     }
 }
