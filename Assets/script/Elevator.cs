@@ -32,6 +32,12 @@ public class Elevator : MonoBehaviour
         if (ID == 1) {
              collider2D.enabled = false;
         }
+        if (ID == 0) {
+             //fin de la partie charger nouvelle scène
+        }
+        if (ID == 2) {
+             //ajouter mob
+        }
     }
 
     public void OnInteract(){
