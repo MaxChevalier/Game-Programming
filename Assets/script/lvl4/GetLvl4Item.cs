@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GetLvl4Item : MonoBehaviour
 {
-    public GameObject InteractUI;
+    private GameObject InteractUI;
     public GamePlayManagerLvl4 gamePlayManager;
     public AudioClip[] audioClip;
     AudioSource audioSource;
@@ -16,6 +16,8 @@ public class GetLvl4Item : MonoBehaviour
     {
         sayText = GameObject.Find("TextSay").GetComponent<SayText>();
         audioSource = transform.parent.GetComponent<AudioSource>();
+        InteractUI = GameObject.Find("GameManager").GetComponent<GameManager>().InteractUI;
+        InteractUI.SetActive(false);
     }
 
     void Update()

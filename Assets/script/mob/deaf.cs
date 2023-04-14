@@ -17,7 +17,7 @@ public class deaf : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (GetComponent<NavMeshAgent>().remainingDistance <= GetComponent<NavMeshAgent>().stoppingDistance && !GetComponent<NavMeshAgent>().pathPending) GetComponent<Animator>().SetBool("isRuning", false);
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -25,6 +25,9 @@ public class deaf : MonoBehaviour
         if (other.gameObject.GetComponent<SoundCreator>() != null && other.gameObject.GetComponent<SoundCreator>().isPlaying)
         {
             GetComponent<NavMeshAgent>().SetDestination(other.gameObject.transform.position);
+            GetComponent<Animator>().SetBool("isRuning", true);
+            if (other.gameObject.transform.position.x < transform.position.x) GetComponent<SpriteRenderer>().flipX = true;
+            else GetComponent<SpriteRenderer>().flipX = false;
         }
     }
 

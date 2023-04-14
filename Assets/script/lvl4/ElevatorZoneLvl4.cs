@@ -9,7 +9,7 @@ public class ElevatorZoneLvl4 : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip audioClip;
     public GeneratorZoneLvl4 GeneratorZone;
-    public GameObject InteractUI;
+    private GameObject InteractUI;
     SayText sayText;
 
     bool isInRange;
@@ -17,6 +17,7 @@ public class ElevatorZoneLvl4 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        InteractUI = GameObject.Find("InteractInfo");
         sayText = GameObject.Find("TextSay").GetComponent<SayText>();
         isInRange = false;
     }

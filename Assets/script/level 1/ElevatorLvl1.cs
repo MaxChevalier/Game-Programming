@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ElevatorLvl1 : MonoBehaviour
 {
-    public GameObject InteractUI;
+    private GameObject InteractUI;
     public GameObject ElevatorLockUI;
     public GeneretorsManagerLvl1 generator;
     public int ID;
@@ -19,6 +19,7 @@ public class ElevatorLvl1 : MonoBehaviour
 
     void Start()
     {
+        InteractUI = GameObject.Find("GameManager").GetComponent<GameManager>().InteractUI;
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         collider2D = GetComponent<Collider2D>();
@@ -30,7 +31,6 @@ public class ElevatorLvl1 : MonoBehaviour
 
     IEnumerator OpenElevator()
     {
-        Debug.Log("Le script OpenElevator a démarré !");
         animator.SetTrigger("OpenElevator");
         BoxCollider2D[] boxCollider2Ds = GetComponents<BoxCollider2D>();
         foreach (BoxCollider2D boxCollider2D in boxCollider2Ds)
@@ -46,6 +46,7 @@ public class ElevatorLvl1 : MonoBehaviour
         else if (ID == 0)
         {
             yield return new WaitForSeconds(1f);
+            Inventory.instance.SaveItems();
             SceneManager.LoadScene("LVL3");
         }
         else if (ID == 2)

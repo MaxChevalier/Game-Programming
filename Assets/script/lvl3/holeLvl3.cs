@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 public class holeLvl3 : MonoBehaviour
 {
     public string nextLevel;
+    public bool active = true;
     // Start is called before the first frame update
     void Start()
     {
         GetComponent<SpriteRenderer>().enabled = false;
-        gameObject.SetActive(false);
+        if (!active) gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -38,7 +39,15 @@ public class holeLvl3 : MonoBehaviour
                 player.localRotation = Quaternion.Euler(0, 0, player.localRotation.z + rotation);
                 yield return new WaitForSeconds(0.01f);
             }
-            SceneManager.LoadScene(nextLevel);
+            if (nextLevel == "death")
+            {
+                GameObject.Find("GameManager").GetComponent<GameManager>().Death();
+            }
+            else
+            {
+                SceneManager.LoadScene(nextLevel);
+                Inventory.instance.SaveItems();
+            }
         }
     }
 }

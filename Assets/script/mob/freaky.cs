@@ -94,7 +94,7 @@ public class freaky : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             isPlayerInRange = true;
-            GetComponent<NavMeshAgent>().speed = 4f;
+            GetComponent<NavMeshAgent>().speed = 3f;
         }
     }
 

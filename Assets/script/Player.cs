@@ -14,9 +14,9 @@ public class Player : MonoBehaviour
     public float walkSpeed = 1f;
     public float sprintSpeed = 2f;
     public bool canMove = true;
-    public LvlManager lvlManager;
+    private GameManager gameManager;
 
-    private float speed = 0f;
+    public float speed = 0f;
     public Vector2 Movement = Vector2.zero;
 
     public bool isOnGamepad = false;
@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
         selfTransform = GetComponent<Transform>();
         speed = walkSpeed;
         animator = GetComponent<Animator>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -109,13 +110,13 @@ public class Player : MonoBehaviour
 
     void OnPause()
     {
-        if (lvlManager.PauseMenu.activeSelf)
+        if (gameManager.PauseMenu.activeSelf)
         {
-            lvlManager.ResumeGame();
+            gameManager.ResumeGame();
         }
         else
         {
-            lvlManager.PauseGame();
+            gameManager.PauseGame();
         }
     }
 
@@ -132,7 +133,7 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.tag == "Mob")
         {
-            // SceneManager.LoadScene("lvl 4");
+            gameManager.Death();
         }
     }
 }

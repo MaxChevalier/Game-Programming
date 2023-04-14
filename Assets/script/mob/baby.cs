@@ -26,6 +26,8 @@ public class baby : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             GetComponent<NavMeshAgent>().SetDestination(other.gameObject.transform.position);
+            if (other.gameObject.transform.position.x > transform.position.x) GetComponent<SpriteRenderer>().flipX = true;
+            else GetComponent<SpriteRenderer>().flipX = false;
         }
     }
 

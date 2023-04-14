@@ -44,12 +44,17 @@ public class MainMenu : MonoBehaviour
 
     public void EXit()
     {
-        Application.Quit();
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
     }
 
     public void loadLvl(string lvl)
     {
-        SceneManager.LoadScene(lvl);
+        Preload.lvlToLoad = lvl;
+        SceneManager.LoadScene("PreloadScene");
     }
 
     private void UnshowPanel()

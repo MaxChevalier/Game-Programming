@@ -9,11 +9,12 @@ public class GeneratorLVL1 : MonoBehaviour
     public GameObject GeneratorlockUI;
     public GameObject GeneratorUnlockUI;
     public GameObject GeneratorLimitUI;
-    public GameObject InteractUI;
+    private GameObject InteractUI;
     private AudioSource audioSource;
 
     void Start()
     {
+        InteractUI = GameObject.Find("GameManager").GetComponent<GameManager>().InteractUI;
         audioSource = transform.parent.GetComponent<AudioSource>();
     }
 

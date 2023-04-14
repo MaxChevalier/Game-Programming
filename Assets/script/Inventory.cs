@@ -8,8 +8,13 @@ public class Inventory : MonoBehaviour
 {
     //singleton : une seule classe inventory
     public int ItemsCount;
-
     public int TotItems = 0;
+
+    public int saveItemsCount;
+
+    public int saveTotItems = 0;
+
+
 
     public static Inventory instance;
 
@@ -28,6 +33,17 @@ public class Inventory : MonoBehaviour
 
     public void AddItems(int count){
         ItemsCount += count;
+        GameObject.Find("ItemsCountText").GetComponent<TextMeshProUGUI>().text = ItemsCount.ToString();
+    }
+
+    public void SaveItems(){
+        saveItemsCount = ItemsCount;
+        saveTotItems = TotItems;
+    }
+
+    public void ReloadItems(){
+        ItemsCount = saveItemsCount;
+        TotItems = saveTotItems;
         GameObject.Find("ItemsCountText").GetComponent<TextMeshProUGUI>().text = ItemsCount.ToString();
     }
 }

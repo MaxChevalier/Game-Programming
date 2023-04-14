@@ -30,6 +30,7 @@ public class Lvl3Manager : MonoBehaviour
             mob.SetActive(true);
             firstMob.GetComponent<deaf>().enabled = true;
             firstMob.tag = "Mob";
+            firstMob.GetComponent<CircleCollider2D>().enabled = true;
         }
     }
 }

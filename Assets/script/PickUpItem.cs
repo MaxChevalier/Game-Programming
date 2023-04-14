@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class PickUpItem : MonoBehaviour
 {
-    public GameObject InteractUI;
+    private GameObject InteractUI;
     private bool isInRange;
     private bool destroy = false;
 
-    void Awake()
+    void Start()
     {
-
+        InteractUI = GameObject.Find("GameManager").GetComponent<GameManager>().InteractUI;
     }
 
     void Update()

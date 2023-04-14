@@ -6,7 +6,7 @@ public class GeneratorZoneLvl4 : MonoBehaviour
 {
     public int GeneratorTurnOn = 0;
     public int TotGenerator = 6;
-    public GameObject InteractUI;
+    private GameObject InteractUI;
     public AudioClip[] audioClip;
     public AudioSource audioSourcePlayer;
     AudioSource audioSource;
@@ -17,6 +17,7 @@ public class GeneratorZoneLvl4 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        InteractUI = GameObject.Find("GameManager").GetComponent<GameManager>().InteractUI;
         sayText = GameObject.Find("TextSay").GetComponent<SayText>();
         isInRange = false;
     }
