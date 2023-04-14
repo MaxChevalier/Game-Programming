@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
 
 public class ElevatorZoneLvl4 : MonoBehaviour
@@ -49,7 +48,7 @@ public class ElevatorZoneLvl4 : MonoBehaviour
         {
             if (GeneratorZone.GeneratorTurnOn == GeneratorZone.TotGenerator)
             {
-                SceneManager.LoadScene("GameEnd");
+                GameObject.Find("GameManager").GetComponent<GameManager>().LoadScene("GameEnd");
             }
             else{
                 sayText.ChangeText("No Power.\nI can't use the elevator.");

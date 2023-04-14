@@ -15,7 +15,7 @@ public class Preload : MonoBehaviour
             DontDestroyOnLoad(obj);
         }
         DontDestroyOnLoad(this.gameObject);
-        SceneManager.LoadScene(Preload.lvlToLoad);
+        GameObject.Find("GameManager").GetComponent<GameManager>().LoadScene(Preload.lvlToLoad);
     }
 
     public void destroy(){

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class holeLvl3 : MonoBehaviour
 {
@@ -45,7 +44,7 @@ public class holeLvl3 : MonoBehaviour
             }
             else
             {
-                SceneManager.LoadScene(nextLevel);
+                GameObject.Find("GameManager").GetComponent<GameManager>().LoadScene(nextLevel);
                 Inventory.instance.SaveItems();
             }
         }

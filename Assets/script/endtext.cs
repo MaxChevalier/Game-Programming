@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 public class endtext : MonoBehaviour
 {
@@ -52,7 +51,7 @@ public class endtext : MonoBehaviour
     }
 
     public void BackToMenu(){
-        SceneManager.LoadScene("Menu");
+        GameObject.Find("GameManager").GetComponent<GameManager>().LoadScene("Menu");
     }
 
     void NoText(){

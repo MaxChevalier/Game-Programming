@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public Preload preload;
     public GameObject InteractUI;
     public GameObject DeathMenu;
+    public GameObject LoadingScreen;
+    private GameObject LoadingCircle;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +21,34 @@ public class GameManager : MonoBehaviour
         InteractUI.SetActive(false);
         PauseMenu.SetActive(false);
         DeathMenu.SetActive(false);
+        LoadingCircle = LoadingScreen.transform.GetChild(0).gameObject;
+        LoadingCircle.SetActive(false);
+        
+        SceneManager.sceneLoaded += OnSceneLoaded; // effectue la fonction OnSceneLoaded quand une scene est chargée
     }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        LoadingCircle.SetActive(false);
+        LoadingScreen.GetComponent<Animator>().SetBool("isLoading", false);
+    }
+
+    // lance la coroutinede changement de scene
+    public void LoadScene(string sceneName)
+    {
+        StartCoroutine(AsyncLoadScene(sceneName));
+    }
+
+    // charge la scene derriere un écran de chargement
+    IEnumerator AsyncLoadScene(string sceneName)
+    {
+        LoadingScreen.GetComponent<Animator>().SetBool("isLoading", true);
+        yield return new WaitForSeconds(2f);
+        LoadingCircle.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene(sceneName);
+    }
+    
 
     // Update is called once per frame
     void Update()
@@ -53,7 +82,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         preload.destroy();
-        SceneManager.LoadScene("MainMenu");
+        GameObject.Find("GameManager").GetComponent<GameManager>().LoadScene("MainMenu");
     }
 
     public void QuitGameNo()
@@ -82,6 +111,6 @@ public class GameManager : MonoBehaviour
         Inventory.instance.ReloadItems();
         Time.timeScale = 1;
         DeathMenu.SetActive(false);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameObject.Find("GameManager").GetComponent<GameManager>().LoadScene(SceneManager.GetActiveScene().name);
     }
 }

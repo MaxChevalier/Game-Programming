@@ -9,10 +9,8 @@ public class Inventory : MonoBehaviour
     //singleton : une seule classe inventory
     public int ItemsCount;
     public int TotItems = 0;
-
-    public int saveItemsCount;
-
-    public int saveTotItems = 0;
+    private int saveItemsCount;
+    private int saveTotItems = 0;
 
 
 

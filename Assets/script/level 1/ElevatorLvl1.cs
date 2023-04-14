@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class ElevatorLvl1 : MonoBehaviour
 {
@@ -29,7 +28,7 @@ public class ElevatorLvl1 : MonoBehaviour
     {
     }
 
-    IEnumerator OpenElevator()
+    void OpenElevator()
     {
         animator.SetTrigger("OpenElevator");
         BoxCollider2D[] boxCollider2Ds = GetComponents<BoxCollider2D>();
@@ -45,9 +44,8 @@ public class ElevatorLvl1 : MonoBehaviour
         }
         else if (ID == 0)
         {
-            yield return new WaitForSeconds(1f);
             Inventory.instance.SaveItems();
-            SceneManager.LoadScene("LVL3");
+            GameObject.Find("GameManager").GetComponent<GameManager>().LoadScene("LVL3");
         }
         else if (ID == 2)
         {
@@ -67,7 +65,7 @@ public class ElevatorLvl1 : MonoBehaviour
             }
             else
             {
-                StartCoroutine(OpenElevator());
+                OpenElevator();
             }
         }
     }

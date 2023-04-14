@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
-using UnityEngine.SceneManagement;
 
 public class ExitLvl1 : MonoBehaviour
 {
@@ -32,7 +31,7 @@ public class ExitLvl1 : MonoBehaviour
             vcam.Follow = null;
             GetComponent<AudioSource>().Play();
             yield return new WaitForSeconds(4f);
-            SceneManager.LoadScene("MainMenu");
+            GameObject.Find("GameManager").GetComponent<GameManager>().LoadScene("MainMenu");
         }
     }
 
