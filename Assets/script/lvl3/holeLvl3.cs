@@ -23,6 +23,7 @@ public class holeLvl3 : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            other.gameObject.GetComponent<Player>().canMove = false;
             transform.GetChild(0).GetComponent<ParticleSystem>().Play();
             GetComponent<SpriteRenderer>().enabled = true;
             Transform player = other.gameObject.transform;

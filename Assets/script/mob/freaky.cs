@@ -9,6 +9,7 @@ public class freaky : MonoBehaviour
 
     public AudioClip[] audioClips;
     private bool isPlayerInRange = false;
+    private Animator animator;
     
     Vector3 refPos;
 
@@ -17,6 +18,7 @@ public class freaky : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         StartCoroutine(NewPositionCoroutine());
         if (audioClips.Length > 0)
         {
@@ -29,16 +31,32 @@ public class freaky : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (GetComponent<NavMeshAgent>().remainingDistance <= GetComponent<NavMeshAgent>().stoppingDistance && !GetComponent<NavMeshAgent>().pathPending)
+        {
+            animator.SetInteger("movement", 0);
+        }
     }
 
     void NewPosition()
     {
-        Vector3 rdmVector = new Vector3(Random.Range(-2, 2), Random.Range(-2, 2), 0);
+        Vector3 rdmVector = new Vector3(Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0);
         Vector3 CurrentPosition = transform.position;
         float maxDistance = 10f;
-        // if 
-        // SetTragetPosition(targetPosition);
+        if (Vector3.Distance(CurrentPosition, refPos) > maxDistance)
+        {
+            SetTragetPosition(refPos);
+        }
+        else if (Vector3.Distance(CurrentPosition + rdmVector, refPos) < maxDistance)
+        {
+            SetTragetPosition(CurrentPosition + rdmVector);
+            if (rdmVector.x<0) GetComponent<SpriteRenderer>().flipX = true;
+            else GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else
+        {
+            SetTragetPosition(CurrentPosition - rdmVector);
+        }
+        animator.SetInteger("movement", 1);
     }
 
     private void SetTragetPosition(Vector3 position)
@@ -54,7 +72,7 @@ public class freaky : MonoBehaviour
             {
                 NewPosition();
             }
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(3f);
         }
     }
 
@@ -76,6 +94,7 @@ public class freaky : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             isPlayerInRange = true;
+            GetComponent<NavMeshAgent>().speed = 4f;
         }
     }
 
@@ -84,6 +103,9 @@ public class freaky : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             SetTragetPosition(other.gameObject.transform.position);
+            animator.SetInteger("movement", 2);
+            if (other.gameObject.transform.position.x < transform.position.x) GetComponent<SpriteRenderer>().flipX = true;
+            else GetComponent<SpriteRenderer>().flipX = false;
         }
     }
 
@@ -93,6 +115,8 @@ public class freaky : MonoBehaviour
         {
             isPlayerInRange = false;
             SetTragetPosition(transform.position);
+            animator.SetInteger("movement", 0);
+            GetComponent<NavMeshAgent>().speed = 2f;
         }
     }
 }
