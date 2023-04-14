@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 
 public class Player : MonoBehaviour
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour
     public float walkSpeed = 1f;
     public float sprintSpeed = 2f;
     public bool canMove = true;
+    public LvlManager lvlManager;
 
     private float speed = 0f;
     public Vector2 Movement = Vector2.zero;
@@ -103,6 +105,18 @@ public class Player : MonoBehaviour
     void OnToggleKeyboard()
     {
         if (isOnGamepad) isOnGamepad = false;
+    }
+
+    void OnPause()
+    {
+        if (lvlManager.PauseMenu.activeSelf)
+        {
+            lvlManager.ResumeGame();
+        }
+        else
+        {
+            lvlManager.PauseGame();
+        }
     }
 
     void OnLightGamepad(InputValue value)

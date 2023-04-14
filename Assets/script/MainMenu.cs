@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class MainMenu : MonoBehaviour
 {
     private string typeText = "debugmode";
+    public EventSystem eventSystem;
+    public GameObject[] Panels;
     private int index = 0;
+    public bool isOnGamepad = false;
+    public int CurrentPanel = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +21,26 @@ public class MainMenu : MonoBehaviour
     void Update()
     {
     }
+
+    void OnToggleGamepad()
+    {
+        if (!isOnGamepad)
+        {
+            isOnGamepad = true;
+            SetSelectItem(CurrentPanel);
+        }
+    }
+
+    void OnToggleKeyboard()
+    {
+        if (isOnGamepad)
+        {
+            isOnGamepad = false;
+            eventSystem.SetSelectedGameObject(null);
+        }
+    }
+
+
 
     public void EXit()
     {
@@ -29,28 +54,56 @@ public class MainMenu : MonoBehaviour
 
     private void UnshowPanel()
     {
-        int nbtChild = transform.parent.childCount;
+        int nbtChild = Panels.Length;
         for (int i = 0; i < nbtChild; i++)
         {
-            transform.parent.GetChild(i).gameObject.SetActive(false);
+            Panels[i].SetActive(false);
         }
     }
 
     public void mainMenuShow()
     {
         UnshowPanel();
-        transform.parent.GetChild(0).gameObject.SetActive(true);
+        GameObject mainMenu = Panels[0];
+        mainMenu.SetActive(true);
+        if (isOnGamepad) SetSelectItem(0);
+        CurrentPanel = 0;
     }
 
     public void CreditShow()
     {
         UnshowPanel();
-        transform.parent.GetChild(1).gameObject.SetActive(true);
+        GameObject credit = Panels[1];
+        credit.SetActive(true);
+        if (isOnGamepad) SetSelectItem(1);
+        CurrentPanel = 1;
     }
 
     public void SelectLvlShow()
     {
         UnshowPanel();
-        transform.parent.GetChild(2).gameObject.SetActive(true);
+        GameObject selectLvl = Panels[2];
+        selectLvl.SetActive(true);
+        if (isOnGamepad) SetSelectItem(2);
+        CurrentPanel = 2;
+    }
+
+    private void SetSelectItem(int panel)
+    {
+        switch (panel)
+        {
+            case 0:
+                eventSystem.SetSelectedGameObject(Panels[0].transform.GetChild(2).gameObject);
+                break;
+
+            case 1:
+                eventSystem.SetSelectedGameObject(Panels[1].transform.GetChild(4).gameObject);
+                break;
+
+            case 2:
+                eventSystem.SetSelectedGameObject(Panels[2].transform.GetChild(0).gameObject);
+                break;
+
+        }
     }
 }
