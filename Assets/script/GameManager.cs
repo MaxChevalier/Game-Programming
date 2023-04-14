@@ -15,6 +15,11 @@ public class GameManager : MonoBehaviour
     public GameObject LoadingScreen;
     private GameObject LoadingCircle;
     // Start is called before the first frame update
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     void Start()
     {
         InteractUI = GameObject.Find("InteractInfo");
@@ -82,7 +87,16 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         preload.destroy();
-        GameObject.Find("GameManager").GetComponent<GameManager>().LoadScene("MainMenu");
+        LoadScene("MainMenu");
+        StartCoroutine(DelLodingScreen());
+    }
+
+    IEnumerator DelLodingScreen()
+    {
+        yield return new WaitForSeconds(3f);
+        Destroy(LoadingScreen.transform.parent.gameObject);
+        Inventory.instance = null;
+        Destroy(this.gameObject);
     }
 
     public void QuitGameNo()
@@ -111,6 +125,6 @@ public class GameManager : MonoBehaviour
         Inventory.instance.ReloadItems();
         Time.timeScale = 1;
         DeathMenu.SetActive(false);
-        GameObject.Find("GameManager").GetComponent<GameManager>().LoadScene(SceneManager.GetActiveScene().name);
+        LoadScene(SceneManager.GetActiveScene().name);
     }
 }

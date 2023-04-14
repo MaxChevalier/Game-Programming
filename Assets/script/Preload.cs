@@ -7,10 +7,15 @@ public class Preload : MonoBehaviour
 {
     public static string lvlToLoad = "lvl1";
     public GameObject[] objects;
+    public GameObject[] DontDestroy;
     // Start is called before the first frame update
     void Start()
     {
         foreach (GameObject obj in objects)
+        {
+            DontDestroyOnLoad(obj);
+        }
+        foreach (GameObject obj in DontDestroy)
         {
             DontDestroyOnLoad(obj);
         }

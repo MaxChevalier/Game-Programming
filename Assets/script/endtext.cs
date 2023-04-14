@@ -51,7 +51,7 @@ public class endtext : MonoBehaviour
     }
 
     public void BackToMenu(){
-        GameObject.Find("GameManager").GetComponent<GameManager>().LoadScene("Menu");
+        GameObject.Find("GameManager").GetComponent<GameManager>().QuitGameYes();
     }
 
     void NoText(){
