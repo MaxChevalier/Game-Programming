@@ -46,7 +46,7 @@ The player must **avoid mutants**, **collect evidence** and **find the exit** to
 
 ***
 
-## 💻 **How does our website works ?**
+## 💻 **How does our game works ?**
 </br>
 To play "Asylum Escape", you have two possibilities: 
 
