@@ -24,6 +24,7 @@ public class holeLvl3 : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<Player>().canMove = false;
+            other.gameObject.GetComponent<Player>().Movement = Vector2.zero;
             transform.GetChild(0).GetComponent<ParticleSystem>().Play();
             GetComponent<SpriteRenderer>().enabled = true;
             Transform player = other.gameObject.transform;

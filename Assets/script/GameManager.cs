@@ -96,6 +96,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         Destroy(LoadingScreen.transform.parent.gameObject);
         Inventory.instance = null;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
         Destroy(this.gameObject);
     }
 
