@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
@@ -47,25 +48,30 @@ public class Player : MonoBehaviour
         if (canMove)
         {
             Movement = value.Get<Vector2>();
-            if (Movement.y > ((Mathf.Sqrt(2)) / 2))
-            {
-                animator.SetInteger("mouvement", 1);
-                transform.GetChild(1).transform.position = new Vector3(0.50f, 0.09f, 0f) + transform.position;
+            if (Math.Abs(Movement.x) > Math.Abs(Movement.y)){
+                if (Movement.x > 0)
+                {
+                    animator.SetInteger("mouvement", 4);
+                    transform.GetChild(1).transform.position = new Vector3(0.88f, 0.11f, 0f) + transform.position;
+                }
+                else
+                {
+                    animator.SetInteger("mouvement", 3);
+                    transform.GetChild(1).transform.position = new Vector3(-0.88f, 0.11f, 0f) + transform.position;
+                }
             }
-            else if (Movement.y < (-(Mathf.Sqrt(2)) / 2))
+            else if (Math.Abs(Movement.x) < Math.Abs(Movement.y))
             {
-                animator.SetInteger("mouvement", 2);
-                transform.GetChild(1).transform.position = new Vector3(0.50f, 0.09f, 0f) + transform.position;
-            }
-            else if (Movement.x >= ((Mathf.Sqrt(2)) / 2))
-            {
-                animator.SetInteger("mouvement", 4);
-                transform.GetChild(1).transform.position = new Vector3(0.88f, 0.11f, 0f) + transform.position;
-            }
-            else if (Movement.x <= (-(Mathf.Sqrt(2)) / 2))
-            {
-                animator.SetInteger("mouvement", 3);
-                transform.GetChild(1).transform.position = new Vector3(-0.88f, 0.11f, 0f) + transform.position;
+                if (Movement.y > 0)
+                {
+                    animator.SetInteger("mouvement", 1);
+                    transform.GetChild(1).transform.position = new Vector3(0.50f, 0.09f, 0f) + transform.position;
+                }
+                else
+                {
+                    animator.SetInteger("mouvement", 2);
+                    transform.GetChild(1).transform.position = new Vector3(0.50f, 0.09f, 0f) + transform.position;
+                }
             }
             else animator.SetInteger("mouvement", 0);
         }
@@ -135,6 +141,7 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.tag == "Mob" && !isDead)
         {
+            animator.SetTrigger("dead");
             isDead = true;
             gameManager.Death();
         }
