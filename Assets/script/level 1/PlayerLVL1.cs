@@ -13,6 +13,10 @@ public class PlayerLVL1 : MonoBehaviour
     void Start()
     {
         audioSource = transform.GetChild(4).GetComponent<AudioSource>();
+        StartCoroutine(Intro());
+    }
+    IEnumerator Intro(){
+        yield return new WaitForSeconds(0.5f);
         audioSource.Play();
     }
 

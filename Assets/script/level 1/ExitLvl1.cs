@@ -31,7 +31,7 @@ public class ExitLvl1 : MonoBehaviour
             vcam.Follow = null;
             GetComponent<AudioSource>().Play();
             yield return new WaitForSeconds(4f);
-            GameObject.Find("GameManager").GetComponent<GameManager>().LoadScene("MainMenu");
+            GameObject.Find("GameManager").GetComponent<GameManager>().QuitGameYes();
         }
     }
 

@@ -8,7 +8,7 @@ public class deaf : MonoBehaviour
     AudioSource audioSource;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         audioSource = GetComponent<AudioSource>();
         StartCoroutine(PlaySound());

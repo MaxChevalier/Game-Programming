@@ -28,9 +28,12 @@ public class Lvl3Manager : MonoBehaviour
         foreach (GameObject mob in mobs)
         {
             mob.SetActive(true);
-            firstMob.GetComponent<deaf>().enabled = true;
-            firstMob.tag = "Mob";
-            firstMob.GetComponent<CircleCollider2D>().enabled = true;
+            if (mob.GetComponent<deaf>()) mob.GetComponent<deaf>().Start();
+            else if (mob.GetComponent<freaky>()) mob.GetComponent<freaky>().Start();
+            else if (mob.GetComponent<baby>()) mob.GetComponent<baby>().Start();
         }
+        firstMob.GetComponent<deaf>().enabled = true;
+        firstMob.tag = "Mob";
+        firstMob.GetComponent<CircleCollider2D>().enabled = true;
     }
 }

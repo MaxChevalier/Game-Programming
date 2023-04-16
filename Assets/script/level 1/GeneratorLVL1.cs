@@ -1,14 +1,14 @@
+using Microsoft.VisualBasic;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GeneratorLVL1 : MonoBehaviour
 {
     public bool isInRange;
     public bool LockKey = false;
-    public GameObject GeneratorlockUI;
-    public GameObject GeneratorUnlockUI;
-    public GameObject GeneratorLimitUI;
+    public GameObject GeneratorUI;
     private GameObject InteractUI;
     private AudioSource audioSource;
 
@@ -26,50 +26,37 @@ public class GeneratorLVL1 : MonoBehaviour
         if (isInRange){
             if (!LockKey){
                 if (transform.parent.GetComponent<GeneretorsManagerLvl1>().OneActive){
-                    GeneratorUnlockUI.SetActive(false);
-                    StartCoroutine(DisplayMessage(GeneratorLimitUI));
-                    Debug.Log("vous ne pouvez pas activer 2 générateurs en même temps !");
+                    StopAllCoroutines();
+                    StartCoroutine(DisplayMessage("You can only turn on one generator !", Color.red));
                     audioSource.Play();
                 }
                 else {
-                     LockKey = true;
-                     GeneratorLimitUI.SetActive(false);
-                     StartCoroutine(DisplayMessage(GeneratorUnlockUI));
-                     transform.parent.GetComponent<GeneretorsManagerLvl1>().OneActive = true;
+                    GetComponent<AudioSource>().Play();
+                    LockKey = true;
+                    StopAllCoroutines();
+                    StartCoroutine(DisplayMessage("This generator is on", Color.green));
+                    transform.parent.GetComponent<GeneretorsManagerLvl1>().OneActive = true;
+                    transform.GetChild(0).GetComponent<UnityEngine.Rendering.Universal.Light2D>().color = Color.green;
                 }
             }
             else {
+                GetComponent<AudioSource>().Stop();
                 LockKey = false;
-                StartCoroutine(DisplayMessage(GeneratorlockUI));
+                StopAllCoroutines();
+                StartCoroutine(DisplayMessage("This generator is off", Color.red));
                 transform.parent.GetComponent<GeneretorsManagerLvl1>().OneActive = false;
+                transform.GetChild(0).GetComponent<UnityEngine.Rendering.Universal.Light2D>().color = Color.red;
             }
         }
     }
 
-    private IEnumerator DisplayMessage(GameObject message){
-        message.SetActive(true);
+    private IEnumerator DisplayMessage(string message, Color color){
+        GeneratorUI.GetComponent<TextMeshProUGUI>().text = message;
+        GeneratorUI.GetComponent<TextMeshProUGUI>().color = color;
+        GeneratorUI.SetActive(true);
         yield return new WaitForSeconds(2f);
-        message.SetActive(false);
+        GeneratorUI.SetActive(false);
     }
-
-    // private IEnumerator GeneratorlockMessage(){
-    //     GeneratorUnlockUI.SetActive(false);
-    //     GeneratorlockUI.SetActive(true);
-    //     yield return new WaitForSeconds(2f);
-    //     GeneratorlockUI.SetActive(false);
-    // }
-    // private IEnumerator GeneratorUnlockMessage(){
-    //     GeneratorlockUI.SetActive(false);
-    //     GeneratorUnlockUI.SetActive(true);
-    //     yield return new WaitForSeconds(2f);
-    //     GeneratorUnlockUI.SetActive(false);
-    // }
-
-    // private IEnumerator GeneratorLimitMessage(){
-    //     GeneratorLimitUI.SetActive(true);
-    //     yield return new WaitForSeconds(2f);
-    //     GeneratorLimitUI.SetActive(false);
-    // }
 
 
     private void OnTriggerEnter2D(Collider2D collision){

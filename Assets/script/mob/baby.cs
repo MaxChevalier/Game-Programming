@@ -8,7 +8,7 @@ public class baby : MonoBehaviour
 
     AudioSource audioSource;
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         GetComponent<NavMeshAgent>().SetDestination(transform.position);
         audioSource = GetComponent<AudioSource>();

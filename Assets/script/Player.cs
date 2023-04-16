@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
 
     public bool isOnGamepad = false;
     public Animator animator;
+
+    bool isDead = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -131,8 +133,9 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Mob")
+        if (other.gameObject.tag == "Mob" && !isDead)
         {
+            isDead = true;
             gameManager.Death();
         }
     }

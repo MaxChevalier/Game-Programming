@@ -34,10 +34,7 @@ public class ElevatorLvl1 : MonoBehaviour
         BoxCollider2D[] boxCollider2Ds = GetComponents<BoxCollider2D>();
         foreach (BoxCollider2D boxCollider2D in boxCollider2Ds)
         {
-            if (!boxCollider2D.isTrigger)
-            {
-                boxCollider2D.enabled = false;
-            }
+            boxCollider2D.enabled = false;
         }
         if (ID == 1)
         {
