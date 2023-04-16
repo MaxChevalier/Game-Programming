@@ -8,10 +8,12 @@ public class PickUpItem : MonoBehaviour
     private GameObject InteractUI;
     private bool isInRange;
     private bool destroy = false;
+    AudioSource audioSource;
 
     void Start()
     {
         InteractUI = GameObject.Find("GameManager").GetComponent<GameManager>().InteractUI;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -42,6 +44,7 @@ public class PickUpItem : MonoBehaviour
     void OnTriggerStay2D(Collider2D other) {
         if (other.CompareTag("Item") && destroy) {
             Destroy(other.gameObject);
+            audioSource.Play();
             destroy = false;
         }
     }
