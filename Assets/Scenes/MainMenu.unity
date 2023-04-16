@@ -1481,6 +1481,7 @@ MonoBehaviour:
   - {fileID: 489740078}
   isOnGamepad: 0
   CurrentPanel: 0
+  Exit: {fileID: 1097438837}
 --- !u!114 &687241159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1648,12 +1649,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_Mode: 4
+    m_WrapAround: 1
+    m_SelectOnUp: {fileID: 1580546376}
+    m_SelectOnDown: {fileID: 1392442085}
+    m_SelectOnLeft: {fileID: 1536393060}
+    m_SelectOnRight: {fileID: 1392442085}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -2051,12 +2052,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_Mode: 4
+    m_WrapAround: 1
+    m_SelectOnUp: {fileID: 1580546376}
+    m_SelectOnDown: {fileID: 1097438839}
+    m_SelectOnLeft: {fileID: 1097438839}
+    m_SelectOnRight: {fileID: 1580546376}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -2421,7 +2422,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 190, y: -119}
+  m_AnchoredPosition: {x: 190.00005, y: -118.99999}
   m_SizeDelta: {x: 157.9868, y: 56.172}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1536393060
@@ -2437,12 +2438,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnUp: {fileID: 1580546376}
+    m_SelectOnDown: {fileID: 1097438839}
+    m_SelectOnLeft: {fileID: 1580546376}
+    m_SelectOnRight: {fileID: 1097438839}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -2691,12 +2692,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnUp: {fileID: 1097438839}
+    m_SelectOnDown: {fileID: 1536393060}
+    m_SelectOnLeft: {fileID: 1392442085}
+    m_SelectOnRight: {fileID: 1536393060}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -3524,7 +3525,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The urbexer's nightmare
+  m_text: Asylum Urbex
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b02e97c4d1366d34b981f73aba9cf258, type: 2}
   m_sharedMaterial: {fileID: 3045796899625229677, guid: b02e97c4d1366d34b981f73aba9cf258, type: 2}

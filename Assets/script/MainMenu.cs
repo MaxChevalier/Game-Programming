@@ -13,9 +13,13 @@ public class MainMenu : MonoBehaviour
     private int index = 0;
     public bool isOnGamepad = false;
     public int CurrentPanel = 0;
+    public GameObject Exit;
     // Start is called before the first frame update
     void Start()
     {
+        #if UNITY_WEBGL
+            Destroy(Exit);
+        #endif
     }
 
     void Update()
